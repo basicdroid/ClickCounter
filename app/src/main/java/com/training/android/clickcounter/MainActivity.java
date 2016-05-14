@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int mCounter;
 
@@ -22,16 +22,16 @@ public class MainActivity extends AppCompatActivity {
         mBtnClickMe = (Button) findViewById(R.id.btnClickMe);
 
         // Set the appropriate listener
-        mBtnClickMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickMe();
-            }
-        });
+        mBtnClickMe.setOnClickListener(this);
     }
 
     public void clickMe() {
         mCounter++;
         mTvCounter.setText(String.valueOf(mCounter));
+    }
+
+    @Override
+    public void onClick(View v) {
+        clickMe();
     }
 }
